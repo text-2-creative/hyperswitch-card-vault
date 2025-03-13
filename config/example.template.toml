@@ -1,0 +1,43 @@
+[log.console]
+enabled = true
+level = "WARN"
+log_format = "default"
+
+[server]
+host = "0.0.0.0"
+port = 8181
+
+[limit]
+request_count = 1
+duration = 1
+
+[database]
+username = "${database_username}"
+password = "${database_password}"
+host = "${database_host}"
+port = "${database_port}"
+dbname = "${database_name}"
+
+[cache]
+tti = 7200 # i.e. 2 hours
+max_capacity = 5000
+
+[secrets]
+locker_private_key = """"${locker_private_key}""""
+
+[tenant_secrets]
+public = { master_key = """${locker_master_key}""", public_key = """${locker_tenant_public_key}""", schema = "public" }
+
+# Aws kms as secrets manager
+[secrets_management]
+secrets_manager = "aws_kms" # Secrets manager client to be used
+
+[secrets_management.aws_kms]
+key_id = "${locker_aws_key_id}" # The AWS key ID used by the KMS SDK for decrypting data.
+region = "${locker_aws_region}" # The AWS region used by the KMS SDK for decrypting data.
+
+
+[api_client]
+client_idle_timeout = 90
+pool_max_idle_per_host = 10
+#identity = ""

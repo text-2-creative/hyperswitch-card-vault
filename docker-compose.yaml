@@ -1,0 +1,10 @@
+services:
+  migration_runner:
+      image: rust:latest
+      command: "bash -c 'cargo install diesel_cli --no-default-features --features postgres && diesel migration --database-url ${DATABASE_URL} run'"
+      working_dir: /app
+      volumes:
+        - ./:/app
+      environment:
+        # format -> postgresql://DB_USER:DB_PASSWORD@HOST:PORT/DATABASE_NAME
+        - DATABASE_URL=${DATABASE_URL}

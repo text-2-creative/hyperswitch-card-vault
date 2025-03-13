@@ -22,7 +22,7 @@ ARG BINARY=locker
 RUN apt-get update \
     && apt-get install -y ca-certificates tzdata libpq-dev curl procps
 
-EXPOSE 8080
+EXPOSE 8181
 
 RUN mkdir -p ${CONFIG_DIR}
 
