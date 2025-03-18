@@ -23,7 +23,7 @@ tti = 7200 # i.e. 2 hours
 max_capacity = 5000
 
 [secrets]
-locker_private_key = """"${locker_private_key}""""
+locker_private_key = """${locker_private_key}"""
 
 [tenant_secrets]
 public = { master_key = """${locker_master_key}""", public_key = """${locker_tenant_public_key}""", schema = "public" }
